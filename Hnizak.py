@@ -41,4 +41,4 @@ async def uptime(ctx):
     await ctx.send(f"The bot is UP since {text1}")
 
 
-client.run("NjY3MzgzNDI4NzY0Nzk0ODgx.XiB7lA.OODcVVaJ85TEpuN2BsKDfXci5L0")
+client.run("NjY3MzgzNDI4NzY0Nzk0ODgx.XiHZOQ.as66DriXzoSArSprykiKhI65bBA")
