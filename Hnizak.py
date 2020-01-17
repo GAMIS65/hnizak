@@ -13,9 +13,8 @@ async def on_member_join(member):
     print(f"{member} has joined the server.")
 
 @client.event
-async def on_member_remove(member, ctx):
+async def on_member_remove(member):
     print(f"{member} has left the server.")
-    await ctx.send(":WeirdChamp:")
 
 @client.command(brief='Latency of the bot', description='Latency of the bot')
 async def latency(ctx):
