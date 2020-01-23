@@ -16,11 +16,13 @@ text1 = now.strftime("%D, %H:%M:%S")
 
 # Load cog
 @client.command()
+@commands.is_owner()
 async def load(ctx, exetension):
     client.load_extension(f"cogs.{exetension}")
 
 # Reload cog
 @client.command()
+@commands.is_owner()
 async def reload(ctx, exetension):
     client.unload_extension(f"cogs.{exetension}")
     client.load_extension(f"cogs.{exetension}")

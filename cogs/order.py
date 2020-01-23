@@ -14,7 +14,7 @@ class order(commands.Cog):
         self.client = client
 
     # Latency
-    @commands.command()
+    @commands.command(aliases=["ping", "pong"])
     async def latency(self, ctx):
         await ctx.send(f"{round(self.client.latency * 1000)}ms")
 
@@ -67,6 +67,36 @@ class order(commands.Cog):
     @commands.command()
     async def pp(self, ctx):
         await ctx.send(f"Your pp is {randrange(25)}cm long")
+
+    # User Info
+    @commands.command(aliases=["stats", "user"])
+    async def info(self, ctx, member: discord.Member):
+        roles = [role for role in member.roles]
+
+        embed = discord.Embed(color=member.color, timestamp=datetime.datetime.utcnow())
+
+        embed.set_author(name=f"{member}")
+
+        embed.set_image(url=member.avatar_url)
+
+        embed.add_field(name="Created Discord Account:", value=member.created_at.strftime("%a, %d %b %Y %H:%M:%S"), inline=False)
+        embed.add_field(name="Joined at:", value=member.joined_at.strftime("%a, %d %b %Y %H:%M:%S"), inline=False)
+        embed.add_field(name=f"Roles ({len(roles)})", value=" ".join([role.mention for role in roles]), inline=False)
+        embed.add_field(name="Top role:", value=member.top_role.mention, inline=False)
+        embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
+
+        await ctx.send(embed=embed)
+
+    # Profile Picture
+    @commands.command(aliases=["pfp", "profilepicture"])
+    async def profile_picture(self, ctx, member: discord.Member):
+        embed = discord.Embed(color=member.color, timestamp=datetime.datetime.utcnow())
+
+        embed.set_author(name=f"{member}")
+        embed.set_image(url=member.avatar_url)
+        embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
+
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(order(client))
