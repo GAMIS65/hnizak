@@ -6,7 +6,7 @@ from itertools import cycle
 from random import randrange
 
 now = datetime.datetime.now()
-text1 = now.strftime("%D, %H:%M:%S")
+text1 = now.strftime("%a, %d %b %Y %H:%M:%S")
 
 class order(commands.Cog):
 
@@ -73,7 +73,7 @@ class order(commands.Cog):
     async def info(self, ctx, member: discord.Member):
         roles = [role for role in member.roles]
 
-        embed = discord.Embed(color=member.color, timestamp=datetime.datetime.utcnow())
+        embed = discord.Embed(colour=member.colour, timestamp=datetime.datetime.utcnow())
 
         embed.set_author(name=f"{member}")
 
@@ -81,16 +81,18 @@ class order(commands.Cog):
 
         embed.add_field(name="Created Discord Account:", value=member.created_at.strftime("%a, %d %b %Y %H:%M:%S"), inline=False)
         embed.add_field(name="Joined at:", value=member.joined_at.strftime("%a, %d %b %Y %H:%M:%S"), inline=False)
+        embed.add_field(name="ID:", value=member.id, inline=False)
         embed.add_field(name=f"Roles ({len(roles)})", value=" ".join([role.mention for role in roles]), inline=False)
         embed.add_field(name="Top role:", value=member.top_role.mention, inline=False)
+        embed.add_field(name="Premium:", value=member.premium, inline=False)
         embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
 
     # Profile Picture
-    @commands.command(aliases=["pfp", "profilepicture"])
-    async def profile_picture(self, ctx, member: discord.Member):
-        embed = discord.Embed(color=member.color, timestamp=datetime.datetime.utcnow())
+    @commands.command(aliases=["pfp", "profile_picture"])
+    async def profilepicture(self, ctx, member: discord.Member):
+        embed = discord.Embed(colour=member.colour, timestamp=datetime.datetime.utcnow())
 
         embed.set_author(name=f"{member}")
         embed.set_image(url=member.avatar_url)

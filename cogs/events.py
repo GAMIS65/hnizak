@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from itertools import cycle
 
 class events(commands.Cog):
 

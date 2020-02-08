@@ -1,15 +1,15 @@
 import discord
-import random
 import datetime
 import os
 from discord.ext import commands, tasks
 from itertools import cycle
-from random import randrange
 
 # Command prefix
 client = commands.Bot(command_prefix="h?")
+
 # Status splash text
 status = cycle([line.rstrip('\n') for line in open("splash.txt")])
+
 # Time
 now = datetime.datetime.now()
 text1 = now.strftime("%D, %H:%M:%S")
