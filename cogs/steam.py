@@ -33,6 +33,23 @@ class steam(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def typeracer(self, ctx, args):
+        URL = f"https://data.typeracer.com/misc/badge?user={args}"
+        headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36'}
+        page = requests.get(URL, headers=headers)
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        typeracer_stats = f"https://data.typeracer.com/misc/badge?user={args}"
+
+        embed = discord.Embed(colour=ctx.author.colour, timestamp=datetime.datetime.utcnow())
+
+        embed.set_image(url=typeracer_stats)
+        embed.add_field(name="Name:", value=args, inline=False)
+        embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
+
+        await ctx.send(embed=embed)
+
 
 def setup(client):
     client.add_cog(steam(client))
