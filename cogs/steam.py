@@ -35,17 +35,30 @@ class steam(commands.Cog):
 
     @commands.command()
     async def typeracer(self, ctx, args):
-        URL = f"https://data.typeracer.com/misc/badge?user={args}"
+        URL = f"https://data.typeracer.com/pit/profile?user={args}"
         headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36'}
         page = requests.get(URL, headers=headers)
         soup = BeautifulSoup(page.content, 'html.parser')
 
-        typeracer_stats = f"https://data.typeracer.com/misc/badge?user={args}"
+        typeracer_log_in_name = soup.find("span", id="profileUsername").get_text()
+        typeracer_nickname = soup.find("td", text="Name").find_next_sibling("td").text
+        typeracer_WPM_rounded = soup.find("span", id="profileWpmRounded").get_text()
+        typeracer_races_completed = soup.find("td", text="Races Completed").find_next_sibling("td").text
+        typeracer_skill_level = soup.find("td", text="Skill Level").find_next_sibling("td").text
+        typeracer_experience_level = soup.find("td", text="Experience Level").find_next_sibling("td").text
+        typeracer_racing_since = soup.find("td", text="Racing Since").find_next_sibling("td").text
+
 
         embed = discord.Embed(colour=ctx.author.colour, timestamp=datetime.datetime.utcnow())
 
-        embed.set_image(url=typeracer_stats)
-        embed.add_field(name="Name:", value=args, inline=False)
+        embed.add_field(name="Name:", value=typeracer_log_in_name, inline=False)
+        embed.add_field(name="Nickname:", value=typeracer_nickname, inline=False)
+        embed.add_field(name="Speed:", value=typeracer_WPM_rounded, inline=False)
+        embed.add_field(name="Races completed:", value=typeracer_races_completed, inline=False)
+        embed.add_field(name="Skill level:", value=typeracer_skill_level, inline=False)
+        embed.add_field(name="Experience level:", value=typeracer_experience_level, inline=False)
+        embed.add_field(name="Racing since:", value=typeracer_racing_since, inline=False)
+
         embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
