@@ -31,7 +31,7 @@ class steam(commands.Cog):
         embed.add_field(name="Recent activity:", value=steam_activity.strip(), inline=False)
         embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
 
-        await ctx.send(embed=embed)     # tw-mg-l-05 tw-stat__value
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(steam(client))
