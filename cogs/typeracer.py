@@ -40,6 +40,6 @@ class typeracer(commands.Cog):
 
             await ctx.send(embed=embed)
 
-    def setup(client):
-        client.add_cog(typeracer(client))
-        print("typeracer.py loaded")
+def setup(client):
+    client.add_cog(typeracer(client))
+    print("typeracer.py loaded")
