@@ -26,6 +26,7 @@ class events(commands.Cog):
         elif isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("Missing required argument. If you need help contact GAMIS65.")
 
+
 def setup(client):
     client.add_cog(events(client))
     print("Events.py loaded")
