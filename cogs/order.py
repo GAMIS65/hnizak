@@ -84,7 +84,6 @@ class order(commands.Cog):
         embed.add_field(name="ID:", value=member.id, inline=False)
         embed.add_field(name=f"Roles ({len(roles)})", value=" ".join([role.mention for role in roles]), inline=False)
         embed.add_field(name="Top role:", value=member.top_role.mention, inline=False)
-        embed.add_field(name="Premium:", value=member.premium, inline=False)
         embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
