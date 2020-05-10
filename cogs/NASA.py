@@ -7,25 +7,26 @@ import datetime
 from dotenv import load_dotenv
 from discord.ext import commands
 
-TOKEN = os.getenv('NASA_TOKEN')
+TOKEN = os.getenv('NASA_TOKEN')    # NASA TOKEN
 
 
 class NASA(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    # Astronomy Picture of the Day
     @commands.command(aliases=["apod", "Apod"])
     async def APOD(self, ctx, args):
 
-        APOD = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={TOKEN}&date={args}")
-        data_json = APOD.json()
-        data_str = json.dumps(data_json, indent=2)
+        APOD = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={TOKEN}&date={args}")    # API URL
+        data_json = APOD.json()    # data from the API URL to json
 
-        image_title = data_json.get('title')
-        image_url = data_json.get('url')
-        image_photographer = data_json.get('copyright')
+        image_title = data_json.get('title')    # get image title
+        image_url = data_json.get('url')    # get image url
+        image_photographer = data_json.get('copyright')    # get name of the photographer
 
-        embed = discord.Embed(colour=ctx.author.colour, timestamp=datetime.datetime.utcnow())  # embed colour and timestamp
+        # Embed
+        embed = discord.Embed(colour=ctx.author.colour, timestamp=datetime.datetime.utcnow())   # embed colour and timestamp
 
         embed.set_author(name="Astronomy Picture of the Day")
         embed.set_image(url=image_url)
@@ -34,19 +35,20 @@ class NASA(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    # Picture from the Mars rover
     @commands.command()
     async def rover(self, ctx, *args):
         
-        parameters = list(args)
+        parameters = list(args)    # URL parameters
 
-        rover = requests.get(f"https://api.nasa.gov/mars-photos/api/v1/rovers/{parameters[0]}/photos?earth_date={parameters[1]}&api_key={TOKEN}")
-        data_json = rover.json()
-        data_str = json.dumps(data_json, indent=2)
+        rover = requests.get(f"https://api.nasa.gov/mars-photos/api/v1/rovers/{parameters[0]}/photos?earth_date={parameters[1]}&api_key={TOKEN}")    # API URL
+        data_json = rover.json()    # data from the API URL to json
 
         rover_image = data_json['photos'][3]['img_src']
         rover_sol = data_json['photos'][3]['sol']
 
-        embed = discord.Embed(colour=ctx.author.colour, timestamp=datetime.datetime.utcnow())  # embed colour and timestamp
+        # Embed
+        embed = discord.Embed(colour=ctx.author.colour, timestamp=datetime.datetime.utcnow())   # embed colour and timestamp
 
         embed.set_author(name="Mars Rover Photos")
         embed.set_image(url=rover_image)
