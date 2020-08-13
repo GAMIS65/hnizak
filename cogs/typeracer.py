@@ -37,8 +37,10 @@ class typeracer(commands.Cog):
         embed.add_field(name="Racing since:", value=typeracer_racing_since, inline=False)
 
         embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)  # footer
-
-        await ctx.send(embed=embed)
+        if typeracer_log_in_name == None:
+            await ctx.send("We couldn't find a profile for username: " + args)
+        else:
+            await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(typeracer(client))
