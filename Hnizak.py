@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 # Token
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = "NjY3MzgzNDI4NzY0Nzk0ODgx.XiB7QA.Z5ygNpIr0omvCp_FpD86Dy7gLGE"
 
 # Command prefix
 client = commands.Bot(command_prefix="h?")

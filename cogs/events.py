@@ -20,11 +20,11 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound):
-            await ctx.send("This command doesn't exist or is currently disabled. If you need help contact GAMIS65.")
+            await ctx.send("This command doesn't exist or is currently disabled.")
         elif isinstance(error, commands.MissingPermissions):
-            await ctx.send("You don't have permission to use this command. If you need help contact server admin.")
+            await ctx.send("You don't have permission to use this command.")
         elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send("Missing required argument. If you need help contact GAMIS65.")
+            await ctx.send("Missing required argument.")
 
 
 def setup(client):
