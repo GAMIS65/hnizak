@@ -8,7 +8,6 @@ List of all the features
 * NASA picture of the day
 * NASA Mars rover photos 
 * 8ball
-* Lookup Steam profiles
 * Lookup Typeracer profiles and display their stats
 * Easily customizable "Splash text" (status)
 * And more
