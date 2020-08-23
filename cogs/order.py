@@ -68,6 +68,12 @@ class order(commands.Cog):
     async def pp(self, ctx):
         await ctx.send(f"Your pp is {randrange(25)}cm long")
 
+    # Say
+    @commands.command()
+    async def say(self, ctx, *, message):
+        await ctx.message.delete()
+        await ctx.send(message)
+
     # User Info
     @commands.command(aliases=["stats", "user"])
     async def info(self, ctx, member: discord.Member):
