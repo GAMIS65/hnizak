@@ -8,6 +8,10 @@ from random import randrange
 now = datetime.datetime.now()
 text1 = now.strftime("%a, %d %b %Y %H:%M:%S")
 
+"""
+It's named order.py because the word commands breaks everything so that's why it's not named commands.py
+"""
+
 class order(commands.Cog):
 
     def __init__(self, client):
@@ -66,7 +70,12 @@ class order(commands.Cog):
     # PP
     @commands.command()
     async def pp(self, ctx):
-        await ctx.send(f"Your pp is {randrange(25)}cm long")
+        pp = "B"
+        length = randrange(25)
+        for _ in range(length):
+            pp += "="
+        pp += "D"
+        await ctx.send(f"{pp} \nYour pp is {length + 1}cm long") # +1 = tip
 
     # Say
     @commands.command()

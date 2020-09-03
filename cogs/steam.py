@@ -10,7 +10,10 @@ class steam(commands.Cog):
 
     @commands.command()
     async def playercount(self, ctx, args):
-        
+        """
+        This is still unfinished 
+        """
+
         player_count_url = requests.get(f"https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid={args}")
         data_json = player_count_url.json()
 
