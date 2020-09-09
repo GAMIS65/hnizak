@@ -4,6 +4,7 @@ import datetime
 from discord.ext import commands, tasks
 from itertools import cycle
 from random import randrange
+from discord import Spotify
 
 now = datetime.datetime.now()
 text1 = now.strftime("%a, %d %b %Y %H:%M:%S")
@@ -82,6 +83,26 @@ class order(commands.Cog):
     async def say(self, ctx, *, message):
         await ctx.message.delete()
         await ctx.send(message)
+    
+    # Spotify
+    @commands.command(aliases=["spotify"])
+    async def Spotify(self, ctx, member: discord.Member):
+            user = member or ctx.author
+            for activity in user.activities:
+                if isinstance(activity, Spotify):
+                    embed = discord.Embed(colour=member.colour, timestamp=datetime.datetime.utcnow())
+
+                    embed.set_author(name=f"{member}")
+
+                    embed.set_image(url=activity.album_cover_url)
+
+                    embed.add_field(name="Song name:", value=activity.title, inline=False)
+                    embed.add_field(name="Album:", value=activity.album, inline=False)
+                    embed.add_field(name="Song Duration:", value=activity.duration, inline=False) # I tried rounding up the song duration but it doesn't work
+                    embed.add_field(name="Artist:", value=activity.artist, inline=False)
+                    embed.set_footer(text=f"Requested By: {ctx.author.name}", icon_url=ctx.author.avatar_url)
+
+                    await ctx.send(embed=embed)
 
     # User Info
     @commands.command(aliases=["stats", "user"])
