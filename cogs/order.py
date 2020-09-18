@@ -34,7 +34,7 @@ class order(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def clear(self, ctx, amount: int):
-        await ctx.channel.purge(limit=amount)
+        await ctx.channel.purge(limit=amount + 1)
 
     # Uptime
     @commands.command()
