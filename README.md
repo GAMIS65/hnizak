@@ -1,13 +1,15 @@
 # hnizak
-Basic Discord bot in Python
+🤖 Discord Bot - Beginner Python Project
 
 # Features
-List of all the features
-* Ban people / uban people
-* Kick people
-* NASA picture of the day
-* NASA Mars rover photos 
-* 8ball
+* Ban / Unban / Kick command
+* NASA Picture of The Day
+* NASA Mars Rover Photos 
+* Yes or No
 * Lookup Typeracer profiles and display their stats
-* Easily customizable "Splash text" (status)
+* Easily customizable status
+* Count messages with MongoDB
+* Delete messages
+* Discord User Info
+* Spotify status
 * And more
