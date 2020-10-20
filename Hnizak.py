@@ -17,7 +17,7 @@ client = commands.Bot(command_prefix="h?")
 
 
 # Status splash text
-status = cycle([line.rstrip('\n') for line in open("splash.txt", encoding="utf8")])
+status = cycle([line.rstrip('\n') for line in open("status.txt", encoding="utf8")])
 
 
 # Time
