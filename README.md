@@ -9,5 +9,5 @@ List of all the features
 * NASA Mars rover photos 
 * 8ball
 * Lookup Typeracer profiles and display their stats
-* Easily customizable "Splash text" (status)
+* Easily customizable status
 * And more
