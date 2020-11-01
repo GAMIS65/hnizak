@@ -48,8 +48,8 @@ async def on_ready():
     print(text1)
 
 
-# Change status every 30 seconds
-@tasks.loop(seconds=30)
+# Change status every 60 seconds
+@tasks.loop(seconds=60)
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
