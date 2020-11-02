@@ -13,7 +13,7 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN')
 
 # Command prefix
-client = commands.Bot(command_prefix="h?")
+client = commands.Bot(command_prefix=os.getenv('prefix'))
 
 
 # Status splash text
