@@ -14,7 +14,6 @@ The prefix can be changed in .env file
 * ```h?pfp @user``` or ```h?profilepicture @user``` - Sends the users profie picture
 * ```h?say message``` - The bot will send your message
 * ```h?uptime``` - Uptime
-* ```h?spotify @user``` - Sends info about the song that the user is listening to
 ## MongoDB commands:
 * ```h?add @user``` - Adds user to the database
 * ```h?delete @user``` - Deletes user from the database
