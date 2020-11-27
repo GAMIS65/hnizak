@@ -1,4 +1,3 @@
-# imports
 import discord
 import datetime
 import os
